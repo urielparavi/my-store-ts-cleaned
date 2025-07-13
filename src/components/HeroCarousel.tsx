@@ -24,22 +24,18 @@ function HeroCarousel() {
               key={index}
               className="min-w-[80vw] sm:min-w-[60vw] md:min-w-[40vw] lg:min-w-full"
             >
-              <Card className="border-2 border-gray-200 dark:border-gray-700 shadow-lg rounded-lg overflow-hidden transition-shadow duration-300 hover:shadow-2xl">
+              <Card className="border-2 border-gray-200 dark:border-gray-700 shadow-lg rounded-xl overflow-hidden transition-shadow duration-300 hover:shadow-2xl">
                 <CardContent className="p-0">
                   <img
                     src={image}
                     alt={`hero-${index + 1}`}
                     className="
-                      w-full
-                      h-[20rem] sm:h-[24rem] md:h-[28rem]
-                      object-cover object-center
-                      rounded-xl
-                      shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)]
-                      ring-1 ring-black/5
-                      transition-transform duration-300 ease-in-out
-                      hover:scale-105
-                      mx-2
-                    "
+        w-full
+        h-[20rem] sm:h-[24rem] md:h-[28rem]
+        object-cover object-center
+        transition-transform duration-300 ease-in-out
+        hover:scale-105
+      "
                   />
                 </CardContent>
               </Card>
