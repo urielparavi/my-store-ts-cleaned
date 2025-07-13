@@ -17,7 +17,6 @@ import { useDispatch } from 'react-redux';
 export const loader: LoaderFunction = async ({
   params,
 }): Promise<SingleProductResponse> => {
-  // console.log(params); // {id: '12'}
   const response = await customFetch<SingleProductResponse>(
     `/products/${params.id}`
   );
@@ -34,8 +33,7 @@ function SingleProduct() {
   const dispatch = useDispatch();
 
   const cartProduct: CartItem = {
-    // Unique identifier for this cart item, created by combining product ID and selected color
-    cartID: product.id + productColor, // e.g., "1234red"
+    cartID: product.id + productColor,
     productID: product.id,
     image,
     title,
@@ -48,47 +46,70 @@ function SingleProduct() {
   const addToCart = () => {
     dispatch(addItem(cartProduct));
   };
+
   return (
-    <section>
-      <div className="flex gap-x-2 h-6 items-center">
-        <Button asChild variant="link" size="sm">
+    <section className="px-4 py-8 bg-gray-50 dark:bg-zinc-900 min-h-screen text-gray-900 dark:text-gray-100">
+      <nav className="flex items-center gap-x-3 text-sm text-gray-600 dark:text-gray-400">
+        <Button
+          asChild
+          variant="link"
+          size="sm"
+          className="hover:text-orange-600 transition"
+        >
           <Link to="/">Home</Link>
         </Button>
-        <Separator orientation="vertical" />
-        <Button asChild variant="link" size="sm">
+        <Separator
+          orientation="vertical"
+          className="h-4 border-gray-300 dark:border-zinc-700"
+        />
+        <Button
+          asChild
+          variant="link"
+          size="sm"
+          className="hover:text-orange-600 transition"
+        >
           <Link to="/products">Products</Link>
         </Button>
-      </div>
-      {/* PRODUCT */}
-      <div className="mt-6 grid gap-y-8 lg:grid-cols-2  lg:gap-x-16">
-        {/* IMAGE FIRST COL */}
+      </nav>
+
+      <div className="mt-8 max-w-7xl mx-auto grid gap-y-10 lg:grid-cols-2 lg:gap-x-16">
         <img
           src={image}
           alt={title}
-          className="w-96 h-96 object-cover rounded-lg lg:w-full"
+          className="w-full max-w-md h-auto object-cover rounded-lg shadow-md mx-auto lg:max-w-full"
         />
-        {/* PRODUCT INFO SECOND COL */}
-        <div>
-          <h1 className="capitalize text-3xl font-bold">{title}</h1>
-          <h4 className="text-xl mt-2">{company}</h4>
-          <p className="mt-3 text-md bg-muted inline-block p-2 rounded-md">
+        <div className="flex flex-col">
+          <h1 className="capitalize text-4xl font-extrabold text-gray-900 dark:text-gray-100">
+            {title}
+          </h1>
+          <h4 className="text-lg mt-2 font-medium text-gray-700 dark:text-gray-400">
+            {company}
+          </h4>
+          <p className="mt-3 text-xl font-semibold text-orange-600 bg-orange-50 dark:bg-orange-900 inline-block px-3 py-1 rounded-md">
             {dollarsAmount}
           </p>
-          <p className="mt-6 leading-8">{description}</p>
-          {/* COLORS */}
-          <SelectProductColor
-            colors={colors}
-            productColor={productColor}
-            setProductColor={setProductColor}
-          />
-          {/* AMOUNT */}
-          <SelectProductAmount
-            mode={Mode.SingleProduct}
-            amount={amount}
-            setAmount={setAmount}
-          />
-          {/* CART BUTTON */}
-          <Button size="lg" className="mt-10" onClick={addToCart}>
+          <p className="mt-6 leading-relaxed text-gray-700 dark:text-gray-300">
+            {description}
+          </p>
+
+          <div className="mt-8 space-y-6">
+            <SelectProductColor
+              colors={colors}
+              productColor={productColor}
+              setProductColor={setProductColor}
+            />
+            <SelectProductAmount
+              mode={Mode.SingleProduct}
+              amount={amount}
+              setAmount={setAmount}
+            />
+          </div>
+
+          <Button
+            size="lg"
+            className="mt-10 bg-orange-600 hover:bg-orange-700 text-white transition rounded-lg shadow-lg"
+            onClick={addToCart}
+          >
             Add To Bag
           </Button>
         </div>
@@ -96,4 +117,5 @@ function SingleProduct() {
     </section>
   );
 }
+
 export default SingleProduct;

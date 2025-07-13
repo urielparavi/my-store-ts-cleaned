@@ -1,73 +1,84 @@
 import { useLoaderData } from 'react-router-dom';
-import ProductsGrid from './ProductsGrid';
-import ProductsList from './ProductsList';
 import { useState } from 'react';
 import { LayoutGrid, List } from 'lucide-react';
+
+import ProductsGrid from './ProductsGrid';
+import ProductsList from './ProductsList';
 import { type ProductsResponse } from '@/utils';
 import { Button } from './ui/button';
 import { Separator } from './ui/separator';
 
 function ProductsContainer() {
-  // Extract metadata from loader data and cast the type
   const { meta } = useLoaderData() as ProductsResponse;
-
-  // Get the total number of products from pagination info
   const totalProducts = meta.pagination.total;
 
-  // State to control layout view mode: 'grid' or 'list'
   const [layout, setLayout] = useState<'grid' | 'list'>('grid');
 
   return (
     <>
-      {/* Header Section */}
-      <section>
-        <div className="flex justify-between items-center mt-8">
-          {/* Display total number of products with plural logic */}
-          <h4 className="font-medium text-md">
-            {totalProducts} product{totalProducts > 1 && 's'}
+      <section className="mt-8 px-4 sm:px-0 max-w-7xl mx-auto">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <h4 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-gray-100">
+            {totalProducts} product{totalProducts !== 1 && 's'} found
           </h4>
-
-          {/* Layout toggle buttons (Grid / List) */}
-          <div className="flex gap-x-4">
-            {/* Grid view button */}
+          <div className="flex gap-2">
             <Button
               onClick={() => setLayout('grid')}
-              variant={layout === 'grid' ? 'default' : 'ghost'} // highlight if selected
+              variant="ghost"
               size="icon"
+              aria-label="Grid view"
+              className={`group rounded-lg px-3 py-2 transition duration-200 ease-in-out
+                ${
+                  layout === 'grid'
+                    ? 'bg-primary text-white shadow-md'
+                    : 'bg-transparent text-gray-600 hover:bg-primary/20 hover:text-primary'
+                }`}
             >
-              <LayoutGrid />
+              <LayoutGrid
+                className={`h-5 w-5 transition-colors duration-200 ease-in-out
+                  ${
+                    layout === 'grid'
+                      ? 'text-white'
+                      : 'text-gray-600 group-hover:text-primary'
+                  }`}
+              />
             </Button>
-
-            {/* List view button */}
             <Button
               onClick={() => setLayout('list')}
-              variant={layout === 'list' ? 'default' : 'ghost'} // highlight if selected
+              variant="ghost"
               size="icon"
+              aria-label="List view"
+              className={`group rounded-lg px-3 py-2 transition duration-200 ease-in-out
+                ${
+                  layout === 'list'
+                    ? 'bg-primary text-white shadow-md'
+                    : 'bg-transparent text-gray-600 hover:bg-primary/20 hover:text-primary'
+                }`}
             >
-              <List />
+              <List
+                className={`h-5 w-5 transition-colors duration-200 ease-in-out
+                  ${
+                    layout === 'list'
+                      ? 'text-white'
+                      : 'text-gray-600 group-hover:text-primary'
+                  }`}
+              />
             </Button>
           </div>
         </div>
-
-        {/* Horizontal line separator */}
-        <Separator className="mt-4" />
+        <Separator className="mt-5 border-gray-300 dark:border-gray-700" />
       </section>
-
-      {/* Main Product Display Section */}
-      <div>
-        {/* Show message if no products are available */}
+      <section className="mt-10 px-4 sm:px-0 max-w-7xl mx-auto">
         {totalProducts === 0 ? (
-          <h5 className="text-2xl mt-16">
-            Sorry, no products matched your search...
-          </h5>
+          <p className="text-center text-lg text-gray-500 dark:text-gray-400 mt-20 font-medium">
+            Sorry, no products matched your search.
+          </p>
         ) : layout === 'grid' ? (
-          // Render Grid layout if selected
           <ProductsGrid />
         ) : (
-          // Otherwise, render List layout
           <ProductsList />
         )}
-      </div>
+      </section>
     </>
   );
 }
