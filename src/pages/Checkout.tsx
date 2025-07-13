@@ -29,17 +29,17 @@ function Checkout() {
   }
 
   return (
-    <section className="bg-gray-50 dark:bg-zinc-900 min-h-screen py-12 px-6 fade-in text-gray-900 dark:text-gray-100">
+    <section className="bg-gray-50 dark:bg-zinc-900 min-h-screen py-12 px-4 sm:px-6 fade-in text-gray-900 dark:text-gray-100">
       <SectionTitle
         text="Place your order"
-        className="text-3xl font-extrabold mb-10"
+        className="text-3xl font-extrabold mb-10 text-center"
       />
 
-      <div className="mt-10 grid gap-12 md:grid-cols-2 items-start max-w-6xl mx-auto">
-        <div className="bg-white dark:bg-zinc-800 p-8 rounded-2xl shadow-lg transition-shadow hover:shadow-xl focus-within:shadow-xl">
+      <div className="mt-10 grid gap-12 md:grid-cols-2 items-start max-w-6xl mx-auto w-full">
+        <div className="w-full max-w-screen-sm mx-auto md:mx-0 bg-white dark:bg-zinc-800 p-6 sm:p-8 rounded-2xl shadow-lg transition-shadow hover:shadow-xl focus-within:shadow-xl text-base">
           <CheckoutForm />
         </div>
-        <aside className="bg-white dark:bg-zinc-800 p-8 rounded-2xl shadow-lg transition-shadow hover:shadow-xl focus-within:shadow-xl">
+        <aside className="w-full max-w-screen-sm mx-auto md:mx-0 bg-white dark:bg-zinc-800 p-6 sm:p-8 rounded-2xl shadow-lg transition-shadow hover:shadow-xl focus-within:shadow-xl text-base">
           <CartTotals />
         </aside>
       </div>
