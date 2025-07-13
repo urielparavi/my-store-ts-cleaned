@@ -20,7 +20,7 @@ export const loader: LoaderFunction = async ({
 
 function Products() {
   return (
-    <main className="fade-in bg-gray-50 dark:bg-zinc-900 min-h-screen px-4 sm:px-6 lg:px-8 py-8 text-gray-900 dark:text-gray-100 max-w-7xl mx-auto">
+    <main className="fade-in bg-gray-50 dark:bg-zinc-900 min-h-screen px-3 sm:px-6 lg:px-10 py-8 text-gray-900 dark:text-gray-100 max-w-[100rem] mx-auto">
       <Filters />
       <ProductsContainer />
       <PaginationContainer />
