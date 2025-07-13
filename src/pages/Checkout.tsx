@@ -4,25 +4,6 @@ import { LoaderFunction, redirect } from 'react-router-dom';
 import { toast } from '@/components/ui/use-toast';
 import { type ReduxStore } from '@/store';
 
-/*
-  This loader enforces user authentication by accessing the Redux store.
-
-  Unlike typical loaders that fetch external data (e.g., products),
-  this loader needs to check if a user exists in the Redux state 
-  before allowing access to protected routes (e.g., /checkout).
-
-  Since React Router loaders run outside the React component tree and
-  do not support React hooks like useSelector,
-  we pass the Redux store as a parameter to the loader factory function.
-
-  Inside the returned loader function, we directly access the current user state.
-
-  If no user is found:
-    - A toast notification is shown prompting login.
-    - The user is redirected to the login page.
-
-  If the user is authenticated, the loader returns null, allowing normal routing.
-*/
 export const loader =
   (store: ReduxStore): LoaderFunction =>
   async (): Promise<Response | null> => {
@@ -40,17 +21,30 @@ function Checkout() {
   const cartTotal = useAppSelector((state) => state.cartState.cartTotal);
 
   if (cartTotal === 0) {
-    return <SectionTitle text="Your cart is empty" />;
+    return (
+      <div className="text-center mt-24 text-gray-500 dark:text-gray-400 fade-in">
+        <SectionTitle text="Your cart is empty" />
+      </div>
+    );
   }
 
   return (
-    <>
-      <SectionTitle text="Place your order" />
-      <div className="mt-8 grid gap-8 md:grid-cols-2 items-start">
-        <CheckoutForm />
-        <CartTotals />
+    <section className="bg-gray-50 dark:bg-zinc-900 min-h-screen py-12 px-6 fade-in text-gray-900 dark:text-gray-100">
+      <SectionTitle
+        text="Place your order"
+        className="text-3xl font-extrabold mb-10"
+      />
+
+      <div className="mt-10 grid gap-12 md:grid-cols-2 items-start max-w-6xl mx-auto">
+        <div className="bg-white dark:bg-zinc-800 p-8 rounded-2xl shadow-lg transition-shadow hover:shadow-xl focus-within:shadow-xl">
+          <CheckoutForm />
+        </div>
+        <aside className="bg-white dark:bg-zinc-800 p-8 rounded-2xl shadow-lg transition-shadow hover:shadow-xl focus-within:shadow-xl">
+          <CartTotals />
+        </aside>
       </div>
-    </>
+    </section>
   );
 }
+
 export default Checkout;

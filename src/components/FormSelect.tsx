@@ -13,11 +13,18 @@ type SelectInputProps = {
   label: string;
   defaultValue?: string;
   options: string[];
+  className?: string;
 };
 
-function FormSelect({ label, name, options, defaultValue }: SelectInputProps) {
+function FormSelect({
+  label,
+  name,
+  options,
+  defaultValue,
+  className,
+}: SelectInputProps) {
   return (
-    <div className="mb-2">
+    <div className={`mb-2 ${className ?? ''}`}>
       <Label htmlFor={name} className="capitalize">
         {label || name}
       </Label>
@@ -26,16 +33,15 @@ function FormSelect({ label, name, options, defaultValue }: SelectInputProps) {
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
-          {options.map((item) => {
-            return (
-              <SelectItem key={item} value={item}>
-                {item}
-              </SelectItem>
-            );
-          })}
+          {options.map((item) => (
+            <SelectItem key={item} value={item}>
+              {item}
+            </SelectItem>
+          ))}
         </SelectContent>
       </Select>
     </div>
   );
 }
+
 export default FormSelect;

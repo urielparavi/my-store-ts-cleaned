@@ -21,8 +21,6 @@ import { loader as singleProductLoader } from './pages/SingleProduct';
 import { loader as checkoutLoader } from './pages/Checkout';
 import { loader as ordersLoader } from './pages/Orders';
 
-// actions
-
 import { action as registerUser } from './pages/Register';
 import { action as loginAction } from './pages/Login';
 import { action as checkoutAction } from './components/CheckoutForm';

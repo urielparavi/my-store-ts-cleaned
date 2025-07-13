@@ -6,12 +6,12 @@ import CartButton from './CartButton';
 
 function Navbar() {
   return (
-    <nav className="bg-muted py-4">
-      <div className="align-element flex justify-between items-center">
+    <nav className="bg-muted/90 backdrop-blur-md shadow-md sticky top-0 z-50 py-4">
+      <div className="container mx-auto flex items-center justify-between gap-6 px-4">
         <Logo />
         <LinksDropdown />
         <NavLinks />
-        <div className="flex justify-center items-center gap-x-4">
+        <div className="flex items-center gap-4">
           <ModeToggle />
           <CartButton />
         </div>
@@ -19,4 +19,5 @@ function Navbar() {
     </nav>
   );
 }
+
 export default Navbar;

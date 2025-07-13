@@ -16,29 +16,66 @@ const carouselImages = [hero1, hero2, hero3, hero4];
 
 function HeroCarousel() {
   return (
-    <div className="hidden lg:block">
-      <Carousel>
-        <CarouselContent>
-          {carouselImages.map((image, index) => {
-            return (
-              <CarouselItem key={index}>
-                <Card>
-                  <CardContent className="p-2">
-                    <img
-                      src={image}
-                      alt="hero"
-                      className="w-full h-[24rem] rounded-md object-cover"
-                    />
-                  </CardContent>
-                </Card>
-              </CarouselItem>
-            );
-          })}
+    <div>
+      <Carousel opts={{ align: 'start', loop: true }} className="relative">
+        <CarouselContent className="touch-pan-x overflow-visible">
+          {carouselImages.map((image, index) => (
+            <CarouselItem
+              key={index}
+              className="min-w-[80vw] sm:min-w-[60vw] md:min-w-[40vw] lg:min-w-full"
+            >
+              <Card className="border-2 border-gray-200 dark:border-gray-700 shadow-lg rounded-lg overflow-hidden transition-shadow duration-300 hover:shadow-2xl">
+                <CardContent className="p-0">
+                  <img
+                    src={image}
+                    alt={`hero-${index + 1}`}
+                    className="
+                      w-full
+                      h-[20rem] sm:h-[24rem] md:h-[28rem]
+                      object-cover object-center
+                      rounded-xl
+                      shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)]
+                      ring-1 ring-black/5
+                      transition-transform duration-300 ease-in-out
+                      hover:scale-105
+                      mx-2
+                    "
+                  />
+                </CardContent>
+              </Card>
+            </CarouselItem>
+          ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+
+        <CarouselPrevious
+          className="
+            absolute z-20 top-1/2 left-4 -translate-y-1/2
+            rounded-full border border-gray-300 bg-white bg-opacity-60 backdrop-blur-sm
+            text-gray-700
+            p-2
+            shadow-md hover:shadow-lg
+            transition-transform duration-200 hover:scale-110 hover:bg-opacity-90
+            disabled:opacity-40 disabled:pointer-events-none
+            cursor-pointer
+          "
+          aria-label="Previous Slide"
+        />
+        <CarouselNext
+          className="
+            absolute z-20 top-1/2 right-4 -translate-y-1/2
+            rounded-full border border-gray-300 bg-white bg-opacity-60 backdrop-blur-sm
+            text-gray-700
+            p-2
+            shadow-md hover:shadow-lg
+            transition-transform duration-200 hover:scale-110 hover:bg-opacity-90
+            disabled:opacity-40 disabled:pointer-events-none
+            cursor-pointer
+          "
+          aria-label="Next Slide"
+        />
       </Carousel>
     </div>
   );
 }
+
 export default HeroCarousel;

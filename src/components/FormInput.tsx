@@ -7,6 +7,7 @@ type FormInputProps = {
   label?: string;
   defaultValue?: string;
   autoComplete?: string;
+  className?: string;
 };
 
 function FormInput({
@@ -15,10 +16,14 @@ function FormInput({
   type,
   defaultValue,
   autoComplete,
+  className,
 }: FormInputProps) {
   return (
-    <div className="mb-2">
-      <Label htmlFor={name} className="capitalize">
+    <div className={`mb-2 ${className ?? ''}`}>
+      <Label
+        htmlFor={name}
+        className="capitalize text-sm font-medium text-muted-foreground mb-1"
+      >
         {label || name}
       </Label>
       <Input
@@ -31,4 +36,5 @@ function FormInput({
     </div>
   );
 }
+
 export default FormInput;
