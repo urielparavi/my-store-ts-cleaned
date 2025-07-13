@@ -82,7 +82,7 @@ function OrdersList() {
                     {isNaN(cost) ? '-' : `$${cost.toFixed(2)}`}
                   </TableCell>
                   <TableCell className="px-4 py-3 text-gray-700 dark:text-gray-300 whitespace-nowrap">
-                    {new Date(createdAt).toLocaleDateString(undefined, {
+                    {new Date(createdAt).toLocaleDateString('en-US', {
                       year: 'numeric',
                       month: 'short',
                       day: 'numeric',
