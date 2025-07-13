@@ -54,9 +54,9 @@ function Orders() {
   }
 
   return (
-    <main className="fade-in min-h-screen bg-gray-50 dark:bg-zinc-900 px-6 py-12 text-gray-900 dark:text-gray-100">
+    <main className="fade-in min-h-screen bg-gray-50 dark:bg-zinc-900 px-4 sm:px-6 py-12 text-gray-900 dark:text-gray-100">
       <SectionTitle text="Your Orders" className="mb-8 text-3xl font-bold" />
-      <div className="max-w-7xl mx-auto bg-white dark:bg-zinc-800 rounded-lg shadow-lg p-6">
+      <div className="w-full max-w-[95%] sm:max-w-4xl lg:max-w-7xl mx-auto bg-white dark:bg-zinc-800 rounded-2xl shadow-lg p-4 sm:p-6">
         <OrdersList />
         <div className="mt-6">
           <ComplexPaginationContainer />
