@@ -13,9 +13,19 @@ function SectionTitle({ text, className = '', style }: SectionTitleProps) {
       style={style}
     >
       <h2
-        className={`text-4xl font-extrabold tracking-wider capitalize
-                   bg-gradient-to-r from-indigo-500 via-purple-600 to-indigo-500
-                   bg-clip-text text-transparent select-none`}
+        className="
+          text-4xl
+          font-extrabold
+          tracking-wider
+          capitalize
+          bg-gradient-to-r
+          from-indigo-500
+          via-purple-600
+          to-indigo-500
+          bg-clip-text
+          text-transparent
+          select-none
+        "
         aria-label={text}
       >
         {text}
