@@ -16,7 +16,7 @@ function OrdersList() {
   const { data: orders, meta } = useLoaderData() as OrdersResponse;
 
   return (
-    <div className="mt-16 max-w-full overflow-x-auto px-1 sm:px-4 lg:px-6">
+    <div className="mt-16 max-w-full overflow-x-auto px-0 sm:px-4 lg:px-6">
       <h4 className="mb-6 text-xl font-semibold capitalize tracking-wide text-gray-900 dark:text-gray-100">
         Total orders:{' '}
         <span className="text-primary dark:text-orange-400">
