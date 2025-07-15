@@ -16,14 +16,14 @@ function OrdersList() {
   const { data: orders, meta } = useLoaderData() as OrdersResponse;
 
   return (
-    <div className="mt-16 max-w-full overflow-x-auto px-4 sm:px-6 lg:px-8">
+    <div className="mt-16 max-w-full overflow-x-auto px-1 sm:px-4 lg:px-6">
       <h4 className="mb-6 text-xl font-semibold capitalize tracking-wide text-gray-900 dark:text-gray-100">
         Total orders:{' '}
         <span className="text-primary dark:text-orange-400">
           {meta.pagination.total}
         </span>
       </h4>
-      <Table className="min-w-[640px] bg-white dark:bg-zinc-900 rounded-lg shadow-md border border-gray-200 dark:border-zinc-700">
+      <Table className="w-full bg-white dark:bg-zinc-900 rounded-lg shadow-md border border-gray-200 dark:border-zinc-700">
         <TableCaption className="text-sm text-gray-500 dark:text-gray-400">
           A list of your recent orders.
         </TableCaption>
