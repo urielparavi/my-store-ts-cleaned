@@ -9,7 +9,7 @@ type SectionTitleProps = {
 function SectionTitle({ text, className = '', style }: SectionTitleProps) {
   return (
     <div
-      className={`mb-16 flex flex-col items-center ${className}`}
+      className={`mb-16 flex flex-col items-center text-center ${className}`}
       style={style}
     >
       <h2
